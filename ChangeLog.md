@@ -1,5 +1,18 @@
 #PlayMaker Cinemachine Change Log
 
+###1.2.2
+**Release**  
+
+- 13/07/2018 
+
+**New**
+
+- Submodule handling of Cinemachine: https://github.com/PlayMakerEcosystem/PlayMaker--Unity--Cinemachine-Submodule-
+
+**Fix**
+
+- global event automatic generation, getting non global event potentially existing as local before adding new global event.
+
 ###1.2.1
 **Release**  
 
