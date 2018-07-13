@@ -156,11 +156,19 @@ public class CinemachineColliderExtensionProxy : MonoBehaviour
     bool AddGlobalEvent(string globalEventName)
     {
 
+       
         if (!FsmEvent.IsEventGlobal(globalEventName))
         {
-            FsmEvent _event = new FsmEvent(globalEventName);
+
+            FsmEvent _event = FsmEvent.GetFsmEvent(globalEventName);
+            if (_event == null)
+            {
+                _event = new FsmEvent(globalEventName);
+                FsmEvent.AddFsmEvent(_event);
+            }
+
             _event.IsGlobal = true;
-            FsmEvent.AddFsmEvent(_event);
+
             return true;
         }
 
