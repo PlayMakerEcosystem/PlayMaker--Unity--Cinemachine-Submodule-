@@ -65,12 +65,17 @@ public class CinemachineColliderExtensionProxy : MonoBehaviour
 
     #if UNITY_EDITOR
     bool _eventadded;
-    #endif
+#endif
+
+
+    CinemachineFreeLook _freeLook;
 
     // Use this for initialization
     void Start()
     {
         _cache = ColliderExtension.gameObject.GetComponent<CinemachineCollider>();
+
+        _freeLook = _cache.VirtualCamera as CinemachineFreeLook;
 
         TargetObscuredVariable.GetVariable(variableTarget);
         CameraWasDisplaced.GetVariable(variableTarget);
@@ -90,12 +95,20 @@ public class CinemachineColliderExtensionProxy : MonoBehaviour
         {
             CreateGlobalEventIfNecessary();
         }
-        #endif
+#endif
 
 
         if (_cache != null)
-            _vcam = _cache.VirtualCamera.LiveChildOrSelf as CinemachineVirtualCameraBase;
+        {
 
+            if (_freeLook != null)
+            {
+                _vcam = _freeLook.GetRig(1) as CinemachineVirtualCameraBase;
+            }else{
+                _vcam = _cache.VirtualCamera;
+            }
+           // _vcam = _cache.VirtualCamera. as CinemachineVirtualCameraBase; // _cache.VirtualCamera.LiveChildOrSelf as CinemachineVirtualCameraBase;
+        }
 
         if (_vcam == null)
         {

@@ -3,11 +3,16 @@
 ###1.2.2
 **Release**  
 
-- 13/07/2018 
+- n/a 
 
 **New**
 
 - Submodule handling of Cinemachine: https://github.com/PlayMakerEcosystem/PlayMaker--Unity--Cinemachine-Submodule-
+
+**Update**
+
+- CinemachineColliderExtensionProxy compatible with newer version of Cinemachine ( freelook giving problems with LiveChildOrSelf deprecated)
+- 
 
 **Fix**
 
