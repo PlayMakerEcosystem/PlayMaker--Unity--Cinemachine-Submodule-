@@ -17,6 +17,8 @@
 **Fix**
 
 - global event automatic generation, getting non global event potentially existing as local before adding new global event.
+- Fixed CinemachineColliderExtensionProxy when collider extension is missing on target
+
 
 ###1.2.1
 **Release**  

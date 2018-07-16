@@ -73,9 +73,12 @@ public class CinemachineColliderExtensionProxy : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _cache = ColliderExtension.gameObject.GetComponent<CinemachineCollider>();
+        if (ColliderExtension!=null && ColliderExtension.gameObject != null)
+        {
+            _cache = ColliderExtension.gameObject.GetComponent<CinemachineCollider>();
 
-        _freeLook = _cache.VirtualCamera as CinemachineFreeLook;
+            _freeLook = _cache.VirtualCamera as CinemachineFreeLook;
+        }
 
         TargetObscuredVariable.GetVariable(variableTarget);
         CameraWasDisplaced.GetVariable(variableTarget);
