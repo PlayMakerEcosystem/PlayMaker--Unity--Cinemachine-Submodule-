@@ -70,7 +70,12 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 
             if (!InvertAxis.IsNone)
             {
+#if UNITY_2018_1_OR_NEWER
+                axisSettings.m_InvertInput = InvertAxis.Value;
+#else
                 axisSettings.m_InvertAxis = InvertAxis.Value;
+#endif
+
             }
 
         }

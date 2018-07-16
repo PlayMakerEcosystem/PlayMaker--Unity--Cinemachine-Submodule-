@@ -3,7 +3,7 @@
 ###1.2.2
 **Release**  
 
-- n/a 
+- 16/07/2018 
 
 **New**
 
@@ -12,7 +12,7 @@
 **Update**
 
 - CinemachineColliderExtensionProxy compatible with newer version of Cinemachine ( freelook giving problems with LiveChildOrSelf deprecated)
-- 
+- CinemachineActionSetAxisSettingsBase and CinemachineActionGetAxisSettingsBase updated for Cinemachine 2.x changes and keep backward compatibilit with 1.x 
 
 **Fix**
 

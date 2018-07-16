@@ -9,7 +9,7 @@ using UnityEngine;
 namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 {
     // Base class for cinemachine actions which gets cameras with axis settings
-    public abstract class CinemachineActionGetAxisSettingsBase<T>: CinemachineActionBase<T> where T : Component
+    public abstract class CinemachineActionGetAxisSettingsBase<T> : CinemachineActionBase<T> where T : Component
     {
         [Tooltip("The name of this axis as specified in Unity Input manager. Setting to an empty string will disable the automatic updating of this axis")]
         [DisplayOrder(1)]
@@ -71,7 +71,11 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 
             if (!InvertAxis.IsNone)
             {
+#if UNITY_2018_1_OR_NEWER
+                InvertAxis.Value = axisSettings.m_InvertInput;
+#else
                 InvertAxis.Value = axisSettings.m_InvertAxis;
+#endif
             }
 
         }
