@@ -1,5 +1,16 @@
 #PlayMaker Cinemachine Change Log
 
+###1.2.3
+**Release**  
+
+- 16/07/2018 
+
+**Update**
+
+- PlayMaker Utils
+- Using PlayMaker utils to create global event if needed ( leveraging instead of duplicating feature)
+
+
 ###1.2.2
 **Release**  
 

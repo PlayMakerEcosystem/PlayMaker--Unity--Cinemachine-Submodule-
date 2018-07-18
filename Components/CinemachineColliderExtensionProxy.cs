@@ -162,33 +162,13 @@ public class CinemachineColliderExtensionProxy : MonoBehaviour
     {
         if (!_eventadded)
         {
-            AddGlobalEvent("CINEMACHINE / COLLIDER / ON TARGET OBSCURED BEGAN");
-            AddGlobalEvent("CINEMACHINE / COLLIDER / ON TARGET OBSCURED ENDED");
-            AddGlobalEvent("CINEMACHINE / COLLIDER / ON CAMERA DISPLACED BEGAN");
-            _eventadded =  AddGlobalEvent("CINEMACHINE / COLLIDER / ON CAMERA DISPLACED ENDED");
+            PlayMakerUtils.CreateIfNeededGlobalEvent("CINEMACHINE / COLLIDER / ON TARGET OBSCURED BEGAN");
+
+            PlayMakerUtils.CreateIfNeededGlobalEvent("CINEMACHINE / COLLIDER / ON TARGET OBSCURED BEGAN");
+            PlayMakerUtils.CreateIfNeededGlobalEvent("CINEMACHINE / COLLIDER / ON TARGET OBSCURED ENDED");
+            PlayMakerUtils.CreateIfNeededGlobalEvent("CINEMACHINE / COLLIDER / ON CAMERA DISPLACED BEGAN");
+            _eventadded = PlayMakerUtils.CreateIfNeededGlobalEvent("CINEMACHINE / COLLIDER / ON CAMERA DISPLACED ENDED");
         }
-    }
-
-    bool AddGlobalEvent(string globalEventName)
-    {
-
-       
-        if (!FsmEvent.IsEventGlobal(globalEventName))
-        {
-
-            FsmEvent _event = FsmEvent.GetFsmEvent(globalEventName);
-            if (_event == null)
-            {
-                _event = new FsmEvent(globalEventName);
-                FsmEvent.AddFsmEvent(_event);
-            }
-
-            _event.IsGlobal = true;
-
-            return true;
-        }
-
-        return false;
     }
 #endif
 }
