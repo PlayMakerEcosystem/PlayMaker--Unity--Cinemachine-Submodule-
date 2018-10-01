@@ -1,5 +1,14 @@
 #PlayMaker Cinemachine Change Log
 
+###1.2.4
+**Release**  
+
+- 01/10/2018 
+
+**Update**
+
+- Compatibility with Cinemachie 2.2.7
+
 ###1.2.3
 **Release**  
 
