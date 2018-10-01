@@ -6,6 +6,7 @@ using UnityEngine;
 using Cinemachine;
 
 using HutongGames.PlayMaker;
+using HutongGames.PlayMaker.Actions.ecosystem.cinemachine;
 
 /// <summary>
 /// This Component listen to m_CameraActivatedEvent and m_CameraCutEvent CinemachineBrain unity events and broadcast PlayMaker Events
@@ -32,9 +33,12 @@ public class CinemachineBrainProxy : MonoBehaviour {
 		}
 	}
 
-    void HandleCameraActivatedAction(ICinemachineCamera arg0)
+
+    void HandleCameraActivatedAction(ICinemachineCamera arg0, ICinemachineCamera arg1)
     {
         Fsm.EventData.GameObjectData = arg0.VirtualCameraGameObject ;
+        CinemachineGetCameraActivateEventInfo.ActivatedCamera = arg0.VirtualCameraGameObject;
+        CinemachineGetCameraActivateEventInfo.PreviousCamera = arg1.VirtualCameraGameObject;
 
         PlayMakerFSM.BroadcastEvent("CINEMACHINE / ON CAMERA ACTIVATED");
     }
