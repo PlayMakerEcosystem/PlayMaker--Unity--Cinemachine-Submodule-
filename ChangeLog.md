@@ -1,5 +1,15 @@
 #PlayMaker Cinemachine Change Log
 
+###1.2.5
+**Release**  
+
+- 19/12/2018 
+
+**New**
+
+- Support for Impulse Extension, with new actions `GenerateImpulse`, `ImpulseListenerSetProperties`, `ImpulseListenerGetProperties`, `ImpulseSourceSetProperties`, `ImpulseSourceGetProperties`
+
+
 ###1.2.4
 **Release**  
 
