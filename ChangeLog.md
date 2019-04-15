@@ -1,5 +1,19 @@
 #PlayMaker Cinemachine Change Log
 
+###1.2.6
+**Release**  
+
+- 07/01/2019 
+
+**New**
+
+- New action `ConfinerInvalidatePathCache`
+
+**fixed**
+
+- Fixed `ConfinerSetProperties` to call InvalidatePathCache if 2d confiner collider changed.  
+
+
 ###1.2.5
 **Release**  
 

@@ -119,6 +119,8 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
             {
                 _goCol2d = Fsm.GetOwnerDefaultTarget(boundingVolume2d);
                 this.cachedComponent.m_BoundingShape2D = _goCol2d?_goCol2d.GetComponent<Collider2D>() : null;
+
+                this.cachedComponent.InvalidatePathCache();
             }
 
             if (!confineScreenEdges.IsNone)
