@@ -1,5 +1,19 @@
 #PlayMaker Cinemachine Change Log
 
+###1.2.7
+**Release**  
+
+- 11/09/2019 
+
+**Update**
+
+- using Cinemachine 2.2.9
+- using PlayMaker utils  1.6.0  
+
+**New**
+
+- New actions `CinemachineActionGetFramingTransposerSettingsBase`, `CinemachineActionSetFramingTransposerSettingsBase`
+
 ###1.2.6
 **Release**  
 
@@ -31,7 +45,7 @@
 
 **Update**
 
-- Compatibility with Cinemachie 2.2.7
+- Compatibility with Cinemachine 2.2.7
 
 ###1.2.3
 **Release**  
