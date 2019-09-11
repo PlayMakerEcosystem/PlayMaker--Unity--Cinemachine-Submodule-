@@ -22,7 +22,7 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
         public CinemachineActionHeader header;
 
         const string HideActionHeaderPrefsKey = "PlayMaker.ecosystem.cinemachine.HideActionHeader";
-
+        
 		public override void InitEditor (Fsm fsmOwner)
 		{
             CinemachineActionHeader.HideActionHeader = EditorPrefs.GetBool(HideActionHeaderPrefsKey, false);
@@ -46,7 +46,7 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
         {
             return CinemachineActionHeader.HideActionHeader;
         }
-
+        
 
 #endif
 
