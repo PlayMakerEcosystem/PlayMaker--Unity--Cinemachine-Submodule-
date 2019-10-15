@@ -1,5 +1,31 @@
 #PlayMaker Cinemachine Change Log
 
+###1.2.9
+**Release**  
+
+- 15/10/2019 
+
+**New**
+
+- New action `VirtualCameraGetCurrentActive`
+
+**fixed**
+
+- Fixed `CinemachineBrainProxy` event handling when previous camera is null
+
+
+###1.2.8
+**Release**  
+
+- 20/09/2019 
+
+**New**
+
+- New action `SetEnableCoreInput`
+- New Option InputEnabled in `CinemachineCoreGetInputTouchAxis`
+- New actions `CameraOffsetGetProperties` `CameraOffsetSetProperties`
+
+
 ###1.2.7
 **Release**  
 

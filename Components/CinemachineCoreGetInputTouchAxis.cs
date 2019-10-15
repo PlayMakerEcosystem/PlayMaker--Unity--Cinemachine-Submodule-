@@ -19,13 +19,22 @@ using UnityEngine;
 /// </summary>
 public class CinemachineCoreGetInputTouchAxis : MonoBehaviour {
 
+    [Tooltip("Flag to enabled or disable input for all cinemachine logics requiring User Input")]
+    public bool InputEnabled = true;
+    
     [Tooltip("If true, you need to click the left mouse button for Input to be working. This is not affecting Touch based Input")]
     public bool InputRequiresClick;
+    
     [Tooltip("Touch based Input Sensitivity for the X axis. Of 10, this means an Input value of 1 if the deltaPosition was 10 pixels for that given frame")]
     public float TouchSensitivity_x = 10f;
+    
     [Tooltip("Touch based Input Sensitivity for the Y axis. Of 10, this means an Input value of 1 if the deltaPosition was 10 pixels for that given frame")]
     public float TouchSensitivity_y = 10f;
+    
 
+
+
+    
 	// Use this for initialization
 	void Start () {
         CinemachineCore.GetInputAxis = HandleAxisInputDelegate;
@@ -33,6 +42,8 @@ public class CinemachineCoreGetInputTouchAxis : MonoBehaviour {
 
     float HandleAxisInputDelegate(string axisName)
     {
+        if (!InputEnabled) return 0f;
+        
         switch(axisName)
         {
             case "Mouse X":

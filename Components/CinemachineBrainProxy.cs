@@ -21,15 +21,15 @@ using HutongGames.PlayMaker.Actions.ecosystem.cinemachine;
 [RequireComponent(typeof(CinemachineBrain))]
 public class CinemachineBrainProxy : MonoBehaviour {
 
-	CinemachineBrain _brain;
+	public static CinemachineBrain Brain;
 
 	// Use this for initialization
 	void Start () {
-
-		_brain = this.GetComponent<CinemachineBrain> ();
-		if (_brain != null) {
-            _brain.m_CameraActivatedEvent.AddListener(HandleCameraActivatedAction);
-            _brain.m_CameraCutEvent.AddListener(HandleCameraCutEventAction);
+		
+		Brain = this.GetComponent<CinemachineBrain> ();
+		if (Brain != null) {
+			Brain.m_CameraActivatedEvent.AddListener(HandleCameraActivatedAction);
+			Brain.m_CameraCutEvent.AddListener(HandleCameraCutEventAction);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class CinemachineBrainProxy : MonoBehaviour {
     {
         Fsm.EventData.GameObjectData = arg0.VirtualCameraGameObject ;
         CinemachineGetCameraActivateEventInfo.ActivatedCamera = arg0.VirtualCameraGameObject;
-        CinemachineGetCameraActivateEventInfo.PreviousCamera = arg1.VirtualCameraGameObject;
+        CinemachineGetCameraActivateEventInfo.PreviousCamera = arg1!=null?arg1.VirtualCameraGameObject:null;
 
         PlayMakerFSM.BroadcastEvent("CINEMACHINE / ON CAMERA ACTIVATED");
     }
