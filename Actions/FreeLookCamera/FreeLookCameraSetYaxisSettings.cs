@@ -49,7 +49,8 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
             {
                 return;
             }
-
+  
+            
             this.SetAxisSettings(ref this.cachedComponent.m_YAxis);
 
         }

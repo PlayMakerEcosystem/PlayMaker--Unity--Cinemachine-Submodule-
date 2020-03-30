@@ -16,23 +16,33 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
         [UIHint(UIHint.Variable)]
         public FsmString InputAxisName;
 
-        [Tooltip("The maximum speed of this axis in units/second. Increasing this number makes the behaviour more responsive to joystick input.")]
+        [Tooltip("The value of the axis")]
         [DisplayOrder(2)]
+        [UIHint(UIHint.Variable)]
+        public FsmFloat Value;
+        
+        [Tooltip("The input value of the axis")]
+        [DisplayOrder(3)]
+        [UIHint(UIHint.Variable)]
+        public FsmFloat InputValue;
+        
+        [Tooltip("The maximum speed of this axis in units/second. Increasing this number makes the behaviour more responsive to joystick input.")]
+        [DisplayOrder(4)]
         [UIHint(UIHint.Variable)]
         public FsmFloat MaxSpeed;
 
         [Tooltip("The amount of time in seconds it takes to accelerate to MaxSpeed with the supplied Axis at its maximum value.")]
-        [DisplayOrder(3)]
+        [DisplayOrder(5)]
         [UIHint(UIHint.Variable)]
         public FsmFloat AccelTime;
 
         [Tooltip("The amount of time in seconds it takes to decelerate the axis to zero if the supplied axis is in a neutral position.")]
-        [DisplayOrder(4)]
+        [DisplayOrder(6)]
         [UIHint(UIHint.Variable)]
         public FsmFloat DecelTime;
 
         [Tooltip("If checked, then the raw value of the input axis will be inverted before it is used.")]
-        [DisplayOrder(5)]
+        [DisplayOrder(7)]
         [UIHint(UIHint.Variable)]
         public FsmBool InvertAxis;
 
@@ -40,6 +50,8 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
         public override void Reset()
         {
             base.Reset();
+            Value = null;
+            InputValue = null;
             MaxSpeed = null;
             AccelTime = null;
             DecelTime = null;
@@ -49,6 +61,15 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 
         protected void GetAxisSettings(ref AxisState axisSettings)
         {
+            if (!Value.IsNone)
+            {
+                Value.Value = axisSettings.Value;
+            }
+            
+            if (!InputValue.IsNone)
+            {
+                InputValue.Value = axisSettings.m_InputAxisValue;
+            }
             if (!MaxSpeed.IsNone)
             {
                 MaxSpeed.Value = axisSettings.m_MaxSpeed;

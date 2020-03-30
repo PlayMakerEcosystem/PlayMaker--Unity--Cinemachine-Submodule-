@@ -3,8 +3,9 @@
 // This code is licensed under the MIT Open source License
 
 
+using System.ComponentModel;
 using Cinemachine;
-using UnityEngine;
+using Component = UnityEngine.Component;
 
 namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 {
@@ -15,44 +16,87 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
         [DisplayOrder(1)]
         public FsmString InputAxisName;
 
+        [Tooltip("The value of the axis")]
+        [DisplayOrder(2)]
+        public FsmFloat Value;
+        
+        [Tooltip("The input value of the axis")]
+        [DisplayOrder(3)]
+        public FsmFloat InputValue;
+        
         [Tooltip("The maximum speed of this axis in units/second. Increasing this number makes the behaviour more responsive to joystick input.\n" +
                  "Leave to none for no effect")]
-        [DisplayOrder(2)]
+        [DisplayOrder(4)]
         public FsmFloat MaxSpeed;
 
         [Tooltip("The amount of time in seconds it takes to accelerate to MaxSpeed with the supplied Axis at its maximum value.\n" +
                  "Leave to none for no effect")]
-        [DisplayOrder(3)]
+        [DisplayOrder(5)]
         public FsmFloat AccelTime;
 
         [Tooltip("The amount of time in seconds it takes to decelerate the axis to zero if the supplied axis is in a neutral position.\n" +
                  "Leave to none for no effect")]
-        [DisplayOrder(4)]
+        [DisplayOrder(6)]
         public FsmFloat DecelTime;
 
         [Tooltip("If checked, then the raw value of the input axis will be inverted before it is used.\n" +
                  "Leave to none for no effect")]
-        [DisplayOrder(5)]
+        [DisplayOrder(7)]
         public FsmBool InvertAxis;
 
+        /*
+        [Tooltip("If checked, will Automatically recenters to at-rest position")]
+        [DisplayOrder(8)]
+        [ActionSection("Recentering")]
+        [Title("Enabled")]  
+        public FsmBool RecenteringEnabled;
 
+        [Tooltip("If no user input has been detected on the axis, the axis will wait this long in seconds before recentering.")]
+        [DisplayOrder(9)]
+        [Title("Wait Time")]  
+        public FsmFloat RecenteringWaitTime;
+        
+        [Tooltip("How long it takes to reach destination once recentering has started.")]
+        [DisplayOrder(10)]
+        [Title("Time")] 
+        public FsmFloat RecenteringTime;
+*/
         public override void Reset()
         {
             base.Reset();
+            
+            Value = new FsmFloat(){UseVariable =true};
+            InputValue = new FsmFloat(){UseVariable =true};
+            
             MaxSpeed = new FsmFloat(){UseVariable =true};
             AccelTime =new FsmFloat() { UseVariable = true };
             DecelTime = new FsmFloat() { UseVariable = true };
             InputAxisName =new FsmString() { UseVariable = true };
             InvertAxis = new FsmBool() { UseVariable = true };
+            /*
+            RecenteringEnabled = new FsmBool() { UseVariable = true };
+            RecenteringWaitTime = new FsmFloat() { UseVariable = true };
+            RecenteringTime = new FsmFloat() { UseVariable = true };
+            */
         }
 
         protected void SetAxisSettings(ref AxisState axisSettings)
         {
+            if (!Value.IsNone)
+            {
+                axisSettings.Value = Value.Value;
+            }
+            
+            if (!InputValue.IsNone)
+            {
+                axisSettings.m_InputAxisValue = InputValue.Value;
+            }
+            
             if (!MaxSpeed.IsNone)
             {
                 axisSettings.m_MaxSpeed = MaxSpeed.Value;
             }
-
+            
             if (!AccelTime.IsNone)
             {
                 axisSettings.m_AccelTime = AccelTime.Value;
@@ -75,9 +119,31 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 #else
                 axisSettings.m_InvertAxis = InvertAxis.Value;
 #endif
-
             }
+            
+     /*  
+            if (!RecenteringEnabled.IsNone)
+            {
+                axisSettings.m_Recentering.m_enabled = RecenteringEnabled.Value;
+            }   
+            
+            
+            if (!RecenteringWaitTime.IsNone)
+            {
+                axisSettings.m_Recentering.m_WaitTime = RecenteringWaitTime.Value;
+            }  
+            
+            if (!RecenteringTime.IsNone)
+            {
+                axisSettings.m_Recentering.m_RecenteringTime = RecenteringTime.Value;
+            }  
+            */
+        }
 
+
+        protected bool HasRecentering(ref AxisState axisSettings)
+        {
+            return axisSettings.HasRecentering;
         }
     }
 }

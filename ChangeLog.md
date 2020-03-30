@@ -1,5 +1,23 @@
 #PlayMaker Cinemachine Change Log
 
+###1.4
+**Release**  
+
+- 30/03/2020 
+
+**New**
+
+- Added Value and InputValue fields to actions featuring AxisSettings
+
+###1.3
+**Release**  
+
+- 17/01/2020 
+
+**New**
+
+- New action `TargetGroupSetTargets`
+
 ###1.2.9
 **Release**  
 
