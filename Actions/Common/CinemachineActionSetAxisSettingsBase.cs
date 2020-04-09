@@ -5,6 +5,7 @@
 
 using System.ComponentModel;
 using Cinemachine;
+using UnityEngine;
 using Component = UnityEngine.Component;
 
 namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
@@ -43,24 +44,33 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
                  "Leave to none for no effect")]
         [DisplayOrder(7)]
         public FsmBool InvertAxis;
-
-        /*
+        
         [Tooltip("If checked, will Automatically recenters to at-rest position")]
         [DisplayOrder(8)]
         [ActionSection("Recentering")]
         [Title("Enabled")]  
+        [HideIf("IsRecenteringHidden")]
         public FsmBool RecenteringEnabled;
 
         [Tooltip("If no user input has been detected on the axis, the axis will wait this long in seconds before recentering.")]
         [DisplayOrder(9)]
         [Title("Wait Time")]  
+        [HideIf("IsRecenteringHidden")]
         public FsmFloat RecenteringWaitTime;
         
         [Tooltip("How long it takes to reach destination once recentering has started.")]
         [DisplayOrder(10)]
         [Title("Time")] 
+        [HideIf("IsRecenteringHidden")]
         public FsmFloat RecenteringTime;
-*/
+        
+        protected bool FeaturesRecentering = true;
+
+        public bool IsRecenteringHidden()
+        {
+            return !FeaturesRecentering;
+        }
+
         public override void Reset()
         {
             base.Reset();
@@ -73,11 +83,11 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
             DecelTime = new FsmFloat() { UseVariable = true };
             InputAxisName =new FsmString() { UseVariable = true };
             InvertAxis = new FsmBool() { UseVariable = true };
-            /*
+
             RecenteringEnabled = new FsmBool() { UseVariable = true };
             RecenteringWaitTime = new FsmFloat() { UseVariable = true };
             RecenteringTime = new FsmFloat() { UseVariable = true };
-            */
+            
         }
 
         protected void SetAxisSettings(ref AxisState axisSettings)
@@ -121,12 +131,10 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 #endif
             }
             
-     /*  
             if (!RecenteringEnabled.IsNone)
             {
                 axisSettings.m_Recentering.m_enabled = RecenteringEnabled.Value;
             }   
-            
             
             if (!RecenteringWaitTime.IsNone)
             {
@@ -136,14 +144,7 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
             if (!RecenteringTime.IsNone)
             {
                 axisSettings.m_Recentering.m_RecenteringTime = RecenteringTime.Value;
-            }  
-            */
-        }
-
-
-        protected bool HasRecentering(ref AxisState axisSettings)
-        {
-            return axisSettings.HasRecentering;
+            }
         }
     }
 }

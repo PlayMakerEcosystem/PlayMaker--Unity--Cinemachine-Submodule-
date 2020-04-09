@@ -1,5 +1,14 @@
 #PlayMaker Cinemachine Change Log
 
+###1.5
+**Release**  
+
+- 09/04/2020 
+
+**New**
+
+- Added Recentering fields to actions featuring AxisSettings
+
 ###1.4
 **Release**  
 

@@ -18,7 +18,13 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 		[Tooltip("repeat every frame, useful for animation")]
 		public bool everyFrame;
 
-        public override void Reset()
+
+		public FreeLookCameraGetXaxisSettings()
+		{
+			this.FeaturesRecentering = false;
+		}
+
+		public override void Reset()
         {   
             base.Reset();
 

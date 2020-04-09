@@ -18,6 +18,7 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 		[Tooltip("repeat every frame, useful for animation")]
 		public bool everyFrame;
 
+		
         public override void Reset()
         {   
             base.Reset();
@@ -51,6 +52,20 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 
             this.GetAxisSettings(ref this.cachedComponent.m_YAxis);
 
+            if (!RecenteringEnabled.IsNone)
+            {
+	            RecenteringEnabled.Value =this.cachedComponent.m_YAxisRecentering.m_enabled;
+            }   
+            
+            if (!RecenteringWaitTime.IsNone)
+            {
+	            RecenteringWaitTime.Value = this.cachedComponent.m_YAxisRecentering.m_WaitTime;
+            }  
+            
+            if (!RecenteringTime.IsNone)
+            {
+	            RecenteringTime.Value = this.cachedComponent.m_YAxisRecentering.m_RecenteringTime;
+            }
         }
     }
 }

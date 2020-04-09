@@ -46,7 +46,35 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
         [UIHint(UIHint.Variable)]
         public FsmBool InvertAxis;
 
+        [Tooltip("If checked, will Automatically recenters to at-rest position")]
+        [DisplayOrder(8)]
+        [ActionSection("Recentering")]
+        [Title("Enabled")]  
+        [UIHint(UIHint.Variable)]
+        [HideIf("IsRecenteringHidden")]
+        public FsmBool RecenteringEnabled;
 
+        [Tooltip("If no user input has been detected on the axis, the axis will wait this long in seconds before recentering.")]
+        [DisplayOrder(9)]
+        [Title("Wait Time")]  
+        [UIHint(UIHint.Variable)]
+        [HideIf("IsRecenteringHidden")]
+        public FsmFloat RecenteringWaitTime;
+        
+        [Tooltip("How long it takes to reach destination once recentering has started.")]
+        [DisplayOrder(10)]
+        [Title("Time")] 
+        [UIHint(UIHint.Variable)]
+        [HideIf("IsRecenteringHidden")]
+        public FsmFloat RecenteringTime;
+        
+        protected bool FeaturesRecentering = true;
+
+        public bool IsRecenteringHidden()
+        {
+            return !FeaturesRecentering;
+        }
+        
         public override void Reset()
         {
             base.Reset();
@@ -57,6 +85,9 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
             DecelTime = null;
             InputAxisName = null;
             InvertAxis = null;
+            RecenteringEnabled = null;
+            RecenteringWaitTime = null;
+            RecenteringTime = null;
         }
 
         protected void GetAxisSettings(ref AxisState axisSettings)

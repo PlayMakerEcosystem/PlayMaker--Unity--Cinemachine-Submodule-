@@ -1,8 +1,9 @@
-﻿// (c) Copyright HutongGames, LLC 2010-2018. All rights reserved.
+﻿// (c) Copyright HutongGames, LLC 2010-2020. All rights reserved.
 // Author jean@hutonggames.com
 // This code is licensed under the MIT Open source License
 
 using Cinemachine;
+using UnityEngine;
 
 namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 {
@@ -14,15 +15,19 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 		[Tooltip("The Cinemachine FreeLook Camera")]
         [CheckForComponent(typeof(CinemachineFreeLook))]
         public FsmOwnerDefault gameObject;
-
-
+        
 		[Tooltip("repeat every frame, useful for animation")]
 		public bool everyFrame;
 
-        public override void Reset()
+		public FreeLookCameraSetXaxisSettings()
+		{
+			this.FeaturesRecentering = false;
+		}
+
+		public override void Reset()
         {   
             base.Reset();
-
+            
             gameObject = null;
 			everyFrame = false;
         }
