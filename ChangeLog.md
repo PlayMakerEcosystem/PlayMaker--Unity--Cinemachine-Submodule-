@@ -9,6 +9,10 @@
 
 - Added axis settings getter and setter for virtual camera Aim POV system
 
+**Update**
+
+- using PlayMaker utils  1.6.2 
+
 ###1.5
 **Release**  
 
