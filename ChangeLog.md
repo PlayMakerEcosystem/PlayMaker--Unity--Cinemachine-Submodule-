@@ -1,5 +1,14 @@
 #PlayMaker Cinemachine Change Log
 
+###1.6
+**Release**  
+
+- 26/05/2020 
+
+**New**
+
+- Added axis settings getter and setter for virtual camera Aim POV system
+
 ###1.5
 **Release**  
 

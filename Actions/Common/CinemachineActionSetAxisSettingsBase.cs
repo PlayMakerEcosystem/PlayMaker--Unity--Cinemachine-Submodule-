@@ -1,15 +1,41 @@
-﻿// (c) Copyright HutongGames, LLC 2010-2018. All rights reserved.
+﻿// (c) Copyright HutongGames, LLC 2010-2020. All rights reserved.
 // Author jean@hutonggames.com
 // This code is licensed under the MIT Open source License
 
 
-using System.ComponentModel;
 using Cinemachine;
 using UnityEngine;
 using Component = UnityEngine.Component;
 
 namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
 {
+    public abstract class CinemachineActionSetAxisSettingsBase<T,C> : CinemachineActionSetAxisSettingsBase<T> where T : CinemachineVirtualCamera where C : CinemachineComponentBase
+    {
+        /// <summary>
+        /// The cached component. Call UpdateCache() first
+        /// </summary>
+        protected C cachedCinemachineComponent;
+
+        private GameObject cachedCinemachineGameObject;
+        
+        protected bool UpdateCinemachineComponent(GameObject go)
+        {
+            if (cachedComponent == null) return false;
+
+            if (cachedCinemachineComponent == null || cachedCinemachineGameObject != go)
+            {
+                cachedCinemachineComponent = cachedComponent.GetCinemachineComponent<C>();
+                cachedCinemachineGameObject = go;
+
+                if (cachedCinemachineComponent == null)
+                {
+                    LogWarning("Missing Cinemachine component: " + typeof(C).FullName + " on: " + go.name);
+                }
+            }
+            return cachedCinemachineComponent != null;
+        }
+    }
+
     // Base class for cinemachine actions which sets cameras with axis settings
     public abstract class CinemachineActionSetAxisSettingsBase<T>: CinemachineActionBase<T> where T : Component
     {

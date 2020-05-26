@@ -55,9 +55,8 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
             if (!RecenteringEnabled.IsNone)
             {
 	            this.cachedComponent.m_YAxisRecentering.m_enabled = RecenteringEnabled.Value;
-            }   
-            
-            
+            }
+
             if (!RecenteringWaitTime.IsNone)
             {
 	            this.cachedComponent.m_YAxisRecentering.m_WaitTime = RecenteringWaitTime.Value;

@@ -47,8 +47,8 @@ namespace HutongGames.PlayMaker.Actions.ecosystem.cinemachine
             return CinemachineActionHeader.HideActionHeader;
         }
         
-
+        
 #endif
-
+        
     }
 }
